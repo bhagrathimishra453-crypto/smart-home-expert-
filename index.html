@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Home Experts</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Brand Colors Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0F172A',     /* Deep Slate/Charcoal for text */
+            brandLight: '#F8FAFC',    /* Soft Off-White for background sections */
+            brandGreen: '#00CC55',    /* Cyber Green from Logo */
+            brandGreenDark: '#059669',/* Darker Green for text/buttons */
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Green Accent Shadow & Glass Effect */
+    .glow-green-sm {
+      box-shadow: 0 4px 20px rgba(0, 204, 85, 0.18);
+    }
+    .glass-navbar {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased">
+  
+  <!-- Fixed Header Navbar -->
+  <header class="sticky top-0 z-50 glass-navbar border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
+      
+      <!-- Brand Logo Container -->
+      <!-- Brand Logo Container -->
+<a href="#" class="flex items-center space-x-3 group min-w-0">
+  
+  <!-- LOGO EMBLEM (Scaled up responsive sizes) -->
+  <div class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 flex items-center justify-center shrink-0">
+    <img 
+      src="logo.png" 
+      alt="Smart Home Experts" 
+      class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+    />
+  </div>
+
+  <!-- BRAND TEXT (Scaled up font sizes) -->
+  <span class="text-lg sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 font-sans leading-tight truncate">
+    Smart Home <span class="text-brandGreenDark">Experts</span>
+  </span>
+
+</a>
+
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-xs xl:text-sm font-semibold text-slate-600">
+        <a href="#home" class="hover:text-brandGreenDark transition duration-200">HOME</a>
+        <a href="about_us.html" class="hover:text-brandGreenDark transition duration-200">ABOUT US</a>
+        <a href="#services" class="hover:text-brandGreenDark transition duration-200">SERVICES</a>
+        <a href="#products" class="hover:text-brandGreenDark transition duration-200">SMART PRODUCTS</a>
+        <a href="#projects" class="hover:text-brandGreenDark transition duration-200">PROJECTS</a>
+      </nav>
+
+      <!-- Desktop CTA & Mobile Menu Toggle -->
+      <div class="flex items-center space-x-3">
+        <!-- Call to Action Button -->
+        <a 
+          href="#booking" 
+          class="hidden sm:inline-flex px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-brandGreenDark hover:bg-emerald-700 transition duration-300 shadow-md shadow-emerald-600/20 shrink-0"
+        >
+          Talk to an Expert
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button 
+          id="menu-toggle"
+          type="button" 
+          class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brandGreenDark"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/80 bg-white px-4 pt-3 pb-6 space-y-3">
+      <a href="#home" class="block py-2 text-sm font-semibold text-slate-700 hover:text-brandGreenDark">HOME</a>
+      <a href="#services" class="block py-2 text-sm font-semibold text-slate-700 hover:text-brandGreenDark">SERVICES</a>
+      <a href="#products" class="block py-2 text-sm font-semibold text-slate-700 hover:text-brandGreenDark">SMART PRODUCTS</a>
+      <a href="#projects" class="block py-2 text-sm font-semibold text-slate-700 hover:text-brandGreenDark">PROJECTS</a>
+      <a href="#why-us" class="block py-2 text-sm font-semibold text-slate-700 hover:text-brandGreenDark">WHY US</a>
+      <a 
+        href="#booking" 
+        class="inline-block w-full text-center mt-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-brandGreenDark hover:bg-emerald-700 transition duration-300 shadow-md shadow-emerald-600/20"
+      >
+        Talk to an Expert
+      </a>
+    </div>
+  </header>
+
+  <!-- Toggle Menu Script -->
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+<!-- Hero Section with Full-Bleed Background Image -->
+<section class="relative min-h-[90vh] flex items-center justify-center bg-slate-950 overflow-hidden border-b border-slate-800">
+  
+  <!-- 1. Full-Screen Background Image -->
+  <img 
+    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" 
+    alt="Luxury Smart Home Interior" 
+    class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+  />
+
+  <!-- 2. Dark Gradient & Glass Overlay (Ensures text readability) -->
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/60 backdrop-blur-[2px]"></div>
+  
+  <!-- Ambient Green Glow Effect -->
+  <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-brandGreen/15 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- 3. Hero Content Container -->
+  <div class="max-w-7xl mx-auto px-6 py-20 relative z-10 w-full">
+    <div class="max-w-3xl space-y-8 text-left">
+      
+      <!-- Sub-headline Pill Badge -->
+      <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-900/80 border border-emerald-500/40 text-emerald-400 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-lg">
+        <span class="w-2 h-2 rounded-full bg-brandGreen animate-pulse"></span>
+        <span>Next-Gen Smart Home Automation</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1]">
+        Transform Your Space Into an <br class="hidden sm:inline"/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-teal-300">Intelligent Home</span>
+      </h1>
+
+      <!-- Subtitle Description -->
+      <p class="text-lg sm:text-xl text-slate-200 max-w-2xl leading-relaxed font-normal drop-shadow">
+        Control lighting, climate, security, and entertainment seamlessly from your smartphone or voice commands. Customized automation designed around your lifestyle.
+      </p>
+
+      <!-- CTA Buttons Group -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+        <!-- Primary Action Button -->
+        <a 
+          href="#booking" 
+          class="px-8 py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-black bg-brandGreen hover:bg-emerald-400 transition duration-300 shadow-xl shadow-emerald-500/25 text-center"
+        >
+          Talk to an Expert
+        </a>
+        
+        <!-- Secondary Action Button -->
+        <a 
+          href="#services" 
+          class="px-8 py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 backdrop-blur-md transition duration-300 text-center"
+        >
+          Explore Solutions
+        </a>
+      </div>
+
+      <!-- Key Metrics / Social Proof -->
+      <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-6 max-w-lg text-left">
+        <div>
+          <p class="text-2xl sm:text-4xl font-extrabold text-white">500+</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Homes Automated</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-4xl font-extrabold text-white">100%</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Custom Design</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-4xl font-extrabold text-white">24/7</p>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-1">Expert Support</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<!-- Section Separator Line -->
+<div class="w-full bg-slate-950 py-4 flex items-center justify-center">
+  <div class="h-px w-3/4 max-w-7xl bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+</div>
+<!-- Interactive & User-Friendly About Us Section -->
+<section id="about" class="py-24 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden border-b border-slate-100 transition-all duration-700">
+  
+  <!-- Subtle Background Glow -->
+  <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <!-- Top Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-brandGreenDark text-xs font-bold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-brandGreen animate-pulse"></span>
+        <span>Get to Know Us</span>
+      </div>
+      <h2 id="about-heading" class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight transition-colors">
+        Making Smart Homes <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Feel Like Magic</span>
+      </h2>
+      <p id="about-desc" class="text-base sm:text-lg text-slate-600 font-normal transition-colors">
+        We bridge the gap between complex technology and everyday comfort. No confusing manuals or ugly wiring—just your home, responding to your life.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Narrative, Interactive Cards & Button -->
+      <div class="lg:col-span-6 space-y-8">
+        
+        <div class="space-y-4">
+          <h3 id="about-subheading" class="text-2xl font-bold text-slate-900 transition-colors">
+            Smart technology shouldn't feel like a science project.
+          </h3>
+          <p id="about-body" class="text-slate-600 text-sm sm:text-base leading-relaxed transition-colors">
+            At <strong>Smart Home Experts</strong>, we started with a simple belief: controlling your home should be as effortless as taking a breath. Whether you're setting the perfect lighting for movie night or checking your front door from halfway across the world, we design solutions that just <em>work</em>.
+          </p>
+        </div>
+
+        <!-- Live Feature Highlights Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div class="about-card p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-emerald-500/50 transition duration-300 group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-110 transition duration-300">🛠️</div>
+            <h4 class="card-title font-bold text-slate-900 text-base">Zero Wall Damage</h4>
+            <p class="card-text text-slate-500 text-xs leading-relaxed mt-1">Our retrofit touch panels swap directly into your existing electrical switchboards seamlessly.</p>
+          </div>
+
+          <div class="about-card p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-emerald-500/50 transition duration-300 group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-110 transition duration-300">📱</div>
+            <h4 class="card-title font-bold text-slate-900 text-base">One Unified App</h4>
+            <p class="card-text text-slate-500 text-xs leading-relaxed mt-1">Control your lights, curtains, AC, and security from one clean dashboard on your phone.</p>
+          </div>
+
+          <div class="about-card p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-emerald-500/50 transition duration-300 group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-110 transition duration-300">🗣️</div>
+            <h4 class="card-title font-bold text-slate-900 text-base">Voice Activated</h4>
+            <p class="card-text text-slate-500 text-xs leading-relaxed mt-1">Fully compatible with Alexa, Google Assistant, and Apple HomeKit right out of the box.</p>
+          </div>
+
+          <div class="about-card p-5 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-emerald-500/50 transition duration-300 group">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center font-bold text-lg mb-3 group-hover:scale-110 transition duration-300">🤝</div>
+            <h4 class="card-title font-bold text-slate-900 text-base">Human Support</h4>
+            <p class="card-text text-slate-500 text-xs leading-relaxed mt-1">Local experts available on call whenever you want to create a new scene or tweak an automation.</p>
+          </div>
+
+        </div>
+
+        <!-- NEW: Button to Standalone Main About Us Page -->
+        <div class="pt-2">
+          <a href="about_us.html" class="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/20 hover:shadow-emerald-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
+            <span>Learn More About Our Journey</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Live Demo Mockup -->
+      <div class="lg:col-span-6">
+        <div class="relative rounded-3xl bg-slate-900 p-6 text-white shadow-2xl border border-slate-800 space-y-6">
+          
+          <!-- Top Mockup Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div class="flex items-center space-x-3">
+              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-200">Live Scene Control Hub</span>
+            </div>
+            <span class="text-xs text-emerald-400 font-mono">Status: Connected</span>
+          </div>
+
+          <!-- Scene Toggle Buttons Grid -->
+          <div class="space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">Try Pre-set Moods</p>
+
+            <div class="grid grid-cols-2 gap-3">
+              
+              <!-- Movie Night -->
+              <button 
+                onclick="changeAboutMood('movie', this)" 
+                class="scene-btn p-4 rounded-xl bg-slate-800/90 border border-emerald-500 text-left transition duration-300 w-full flex items-center justify-between"
+              >
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">🎬</span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Movie Night</p>
+                    <p class="text-[10px] text-slate-400">Lights 10% • Curtains Closed</p>
+                  </div>
+                </div>
+                <span class="dot-indicator w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              </button>
+
+              <!-- Good Morning -->
+              <button 
+                onclick="changeAboutMood('morning', this)" 
+                class="scene-btn p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 text-left opacity-70 hover:opacity-100 transition duration-300 w-full flex items-center justify-between"
+              >
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">☀️</span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Good Morning</p>
+                    <p class="text-[10px] text-slate-400">Curtains Open • AC 24°C</p>
+                  </div>
+                </div>
+                <span class="dot-indicator w-2 h-2 rounded-full bg-slate-600"></span>
+              </button>
+
+              <!-- Good Night -->
+              <button 
+                onclick="changeAboutMood('night', this)" 
+                class="scene-btn p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 text-left opacity-70 hover:opacity-100 transition duration-300 w-full flex items-center justify-between"
+              >
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">🌙</span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Good Night</p>
+                    <p class="text-[10px] text-slate-400">All Lights Off • Doors Locked</p>
+                  </div>
+                </div>
+                <span class="dot-indicator w-2 h-2 rounded-full bg-slate-600"></span>
+              </button>
+
+              <!-- Away Mode -->
+              <button 
+                onclick="changeAboutMood('away', this)" 
+                class="scene-btn p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 text-left opacity-70 hover:opacity-100 transition duration-300 w-full flex items-center justify-between"
+              >
+                <div class="flex items-center space-x-3">
+                  <span class="text-xl">🔒</span>
+                  <div>
+                    <p class="text-xs font-bold text-white">Away Mode</p>
+                    <p class="text-[10px] text-slate-400">Sensors Active • Cameras On</p>
+                  </div>
+                </div>
+                <span class="dot-indicator w-2.5 h-2.5 rounded-full bg-slate-600"></span>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Bottom Callout -->
+          <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs leading-relaxed flex items-center space-x-3">
+            <span class="text-lg">💡</span>
+            <span><strong>Did you know?</strong> Every setup is customized to match your exact daily routine.</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- JavaScript to isolated mood changes for #about section only -->
+<script>
+  function changeAboutMood(mode, btnElement) {
+    const aboutSection = document.getElementById('about');
+    const heading = document.getElementById('about-heading');
+    const subheading = document.getElementById('about-subheading');
+    const body = document.getElementById('about-body');
+    const desc = document.getElementById('about-desc');
+    
+    const cards = document.querySelectorAll('.about-card');
+    const cardTitles = document.querySelectorAll('.card-title');
+    const cardTexts = document.querySelectorAll('.card-text');
+    
+    const allButtons = document.querySelectorAll('.scene-btn');
+    const allDots = document.querySelectorAll('.dot-indicator');
+
+    // 1. Reset all button active styles
+    allButtons.forEach(btn => {
+      btn.className = "scene-btn p-4 rounded-xl bg-slate-800/40 border border-slate-700/60 text-left opacity-70 hover:opacity-100 transition duration-300 w-full flex items-center justify-between";
+    });
+    
+    allDots.forEach(dot => {
+      dot.className = "dot-indicator w-2 h-2 rounded-full bg-slate-600";
+    });
+
+    // 2. Highlight clicked button
+    btnElement.className = "scene-btn p-4 rounded-xl bg-slate-800/90 border border-emerald-500 text-left transition duration-300 w-full flex items-center justify-between";
+    const activeDot = btnElement.querySelector('.dot-indicator');
+    if (activeDot) activeDot.className = "dot-indicator w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+
+    // 3. Dynamic background swaps for #about ONLY + text/card adaptation
+    if (mode === 'morning') {
+      // Warm Amber Sunrise
+      aboutSection.className = "py-24 bg-gradient-to-br from-amber-950 via-slate-900 to-slate-950 relative overflow-hidden border-b border-amber-900/30 transition-all duration-700";
+      heading.className = "text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight transition-colors";
+      subheading.className = "text-2xl font-bold text-amber-100 transition-colors";
+      body.className = "text-slate-300 text-sm sm:text-base leading-relaxed transition-colors";
+      desc.className = "text-base sm:text-lg text-slate-300 font-normal transition-colors";
+      
+      cards.forEach(c => c.className = "about-card p-5 rounded-2xl bg-slate-900/80 border border-amber-900/40 shadow-sm transition duration-300 group");
+      cardTitles.forEach(t => t.className = "card-title font-bold text-white text-base");
+      cardTexts.forEach(txt => txt.className = "card-text text-slate-400 text-xs leading-relaxed mt-1");
+
+    } else if (mode === 'movie') {
+      // Deep Cinema Blue
+      aboutSection.className = "py-24 bg-slate-950 relative overflow-hidden border-b border-slate-800 transition-all duration-700";
+      heading.className = "text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight transition-colors";
+      subheading.className = "text-2xl font-bold text-white transition-colors";
+      body.className = "text-slate-300 text-sm sm:text-base leading-relaxed transition-colors";
+      desc.className = "text-base sm:text-lg text-slate-300 font-normal transition-colors";
+      
+      cards.forEach(c => c.className = "about-card p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm transition duration-300 group");
+      cardTitles.forEach(t => t.className = "card-title font-bold text-white text-base");
+      cardTexts.forEach(txt => txt.className = "card-text text-slate-400 text-xs leading-relaxed mt-1");
+
+    } else if (mode === 'night') {
+      // Midnight Indigo
+      aboutSection.className = "py-24 bg-gradient-to-br from-indigo-950 via-slate-950 to-black relative overflow-hidden border-b border-indigo-900/40 transition-all duration-700";
+      heading.className = "text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight transition-colors";
+      subheading.className = "text-2xl font-bold text-indigo-100 transition-colors";
+      body.className = "text-slate-300 text-sm sm:text-base leading-relaxed transition-colors";
+      desc.className = "text-base sm:text-lg text-slate-300 font-normal transition-colors";
+      
+      cards.forEach(c => c.className = "about-card p-5 rounded-2xl bg-slate-900/80 border border-indigo-900/40 shadow-sm transition duration-300 group");
+      cardTitles.forEach(t => t.className = "card-title font-bold text-white text-base");
+      cardTexts.forEach(txt => txt.className = "card-text text-slate-400 text-xs leading-relaxed mt-1");
+
+    } else if (mode === 'away') {
+      // Security Cyan / Dark Teal
+      aboutSection.className = "py-24 bg-gradient-to-br from-teal-950 via-slate-900 to-slate-950 relative overflow-hidden border-b border-teal-900/40 transition-all duration-700";
+      heading.className = "text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight transition-colors";
+      subheading.className = "text-2xl font-bold text-teal-100 transition-colors";
+      body.className = "text-slate-300 text-sm sm:text-base leading-relaxed transition-colors";
+      desc.className = "text-base sm:text-lg text-slate-300 font-normal transition-colors";
+      
+      cards.forEach(c => c.className = "about-card p-5 rounded-2xl bg-slate-900/80 border border-teal-900/40 shadow-sm transition duration-300 group");
+      cardTitles.forEach(t => t.className = "card-title font-bold text-white text-base");
+      cardTexts.forEach(txt => txt.className = "card-text text-slate-400 text-xs leading-relaxed mt-1");
+    }
+  }
+</script>
+<!-- Services / Solutions Section -->
+<section id="services" class="py-20 bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-brandGreenDark text-xs font-bold uppercase tracking-wider">
+        Complete Home Automation
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Tailored Smart Solutions for Every Room
+      </h2>
+      <p class="text-base text-slate-600">
+        Upgrade your home with centralized touch controls, automated scenes, and integrated security tailored to your space.
+      </p>
+    </div>
+
+    <!-- 6-Card Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Smart Lighting & Scenes -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Smart Lighting & Moods</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Set dimmable lighting scenes for movies, dining, or relaxation with touch panels, smart switches, or voice control.
+        </p>
+      </div>
+
+      <!-- Card 2: Motorized Curtains & Blinds -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Curtain & Shade Automation</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Open and close drapes automatically based on sunlight, scheduling, or custom single-tap morning scenes.
+        </p>
+      </div>
+
+      <!-- Card 3: Security & Smart Locks -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Security & Smart Access</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Keyless digital door locks, smart video doorbells, motion sensors, and live camera monitoring anywhere.
+        </p>
+      </div>
+
+      <!-- Card 4: Touch Panels & Keypads -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Touch Switches & Panels</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Sleek glass touch switches and wall panels that replace legacy wiring with modern capacitive touch.
+        </p>
+      </div>
+
+      <!-- Card 5: Smart Climate & Energy -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Climate & Energy Control</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Automate AC temperatures and track power consumption to maximize home comfort while reducing electricity bills.
+        </p>
+      </div>
+
+      <!-- Card 6: Home Theater & Audio -->
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-emerald-500/40 hover:shadow-xl transition duration-300 group">
+        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-brandGreenDark flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m2.828-9.9a9 9 0 010 12.728"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900 mb-2">Multi-Room Audio & Media</h3>
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Sync background music across rooms or trigger "Movie Night" mode to lower blinds and dim lights instantly.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Why Us / Value Proposition Section -->
+<section id="why-us" class="py-20 bg-slate-50 border-b border-slate-200/60">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Side: Visual Feature Card -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-3xl bg-slate-900 p-8 text-white shadow-2xl overflow-hidden border border-slate-800">
+          
+          <!-- Subtle Glow Background -->
+          <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div class="relative z-10 space-y-6">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+              Engineered For Simplicity
+            </span>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              Smart Tech Made Completely Hassle-Free
+            </h3>
+
+            <p class="text-slate-300 text-sm leading-relaxed">
+              We eliminate complex setups. Our team handles design, wiring, programming, and handoff so your family can enjoy effortless smart living from day one.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-slate-800">
+              <div class="flex items-center space-x-3 text-sm text-slate-200">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                <span>No major rewiring or wall damage required</span>
+              </div>
+              <div class="flex items-center space-x-3 text-sm text-slate-200">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                <span>Works with Alexa, Google Home, & Apple HomeKit</span>
+              </div>
+              <div class="flex items-center space-x-3 text-sm text-slate-200">
+                <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                <span>Dedicated post-installation warranty & support</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: 4 Core Advantages -->
+      <div class="lg:col-span-7 space-y-8">
+        
+        <div class="space-y-3">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-100/60 border border-emerald-200 text-brandGreenDark text-xs font-bold uppercase tracking-wider">
+            Why Work With Us
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            The Smart Home Experts Difference
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <!-- Feature 1 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brandGreenDark flex items-center justify-center font-bold">
+              01
+            </div>
+            <h4 class="text-lg font-bold text-slate-900">Retrofit Friendly</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Upgrade existing homes without tearing down walls or disturbing existing decor.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brandGreenDark flex items-center justify-center font-bold">
+              02
+            </div>
+            <h4 class="text-lg font-bold text-slate-900">Tailored Design</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Every package is customized to your floor plan, routine, and budget goals.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brandGreenDark flex items-center justify-center font-bold">
+              03
+            </div>
+            <h4 class="text-lg font-bold text-slate-900">One-App Control</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Manage lights, locks, and shades from a single unified, user-friendly dashboard.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-brandGreenDark flex items-center justify-center font-bold">
+              04
+            </div>
+            <h4 class="text-lg font-bold text-slate-900">Local Support</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              On-demand technical assistance and system updates whenever you need help.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- Projects Showcase Section -->
+<section id="projects" class="py-20 bg-white border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-brandGreenDark text-xs font-bold uppercase tracking-wider">
+        Recent Transformations
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Featured Smart Home Projects
+      </h2>
+      <p class="text-base text-slate-600">
+        Take a look at how we turn modern residences and villas into fully automated, intelligent living spaces.
+      </p>
+    </div>
+
+    <!-- 3 Project Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Project 1 -->
+      <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-sm hover:shadow-xl transition duration-300 group">
+        <div class="h-56 overflow-hidden relative">
+          <img 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
+            alt="Luxury Villa Automation" 
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Full Villa Automation
+          </span>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="text-lg font-bold text-slate-900">Modern Luxury Residence</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">
+            Integrated centralized lighting, motorized curtains, multi-room audio, and smart access control.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-sm hover:shadow-xl transition duration-300 group">
+        <div class="h-56 overflow-hidden relative">
+          <img 
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" 
+            alt="Apartment Retrofit" 
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Retrofit Apartment
+          </span>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="text-lg font-bold text-slate-900">4-BHK Smart Apartment</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">
+            Converted standard lighting switches to smart glass touch panels with zero wall breaking.
+          </p>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 shadow-sm hover:shadow-xl transition duration-300 group">
+        <div class="h-56 overflow-hidden relative">
+          <img 
+            src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" 
+            alt="Smart Home Theater" 
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            Media & Security
+          </span>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="text-lg font-bold text-slate-900">Home Theater & Security</h3>
+          <p class="text-slate-600 text-xs leading-relaxed">
+            Custom movie mood scenes paired with smart video doorbells and keyless locks.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Step 6: Contact & Consultation Booking Form Section -->
+<section id="booking" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Booking Pitch -->
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+          Get Started Today
+        </span>
+
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+          Ready to Automate <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Your Dream Space?</span>
+        </h2>
+
+        <p class="text-slate-300 text-base leading-relaxed">
+          Book a free consultation with our smart home engineers. We'll evaluate your floor plan and suggest custom options tailored to your budget.
+        </p>
+
+        <div class="space-y-4 pt-4 border-t border-slate-800 text-slate-300 text-sm">
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <span>contact@smarthomeexperts.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <span>+91 98765 43210</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Booking Form Card -->
+      <div class="lg:col-span-6">
+        <form class="p-8 rounded-3xl bg-slate-800/90 border border-slate-700/80 shadow-2xl space-y-5">
+          <h3 class="text-xl font-bold text-white mb-2">Book a Free Consultation</h3>
+          
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Full Name</label>
+            <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm" required />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Phone Number</label>
+              <input type="tel" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">City / Location</label>
+              <input type="text" placeholder="Your City" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 text-sm" required />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Interest Area</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 focus:outline-none focus:border-emerald-500 text-sm">
+              <option>Full Home Automation</option>
+              <option>Smart Lighting & Switches</option>
+              <option>Curtains & Shades</option>
+              <option>Security & Digital Locks</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl text-xs font-bold uppercase tracking-wider text-black bg-brandGreen hover:bg-emerald-400 transition duration-300 shadow-lg shadow-emerald-500/20">
+            Submit Consultation Request
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 py-8 text-center text-xs text-slate-500 border-t border-slate-800">
+  <p>© 2026 Smart Home Experts. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
